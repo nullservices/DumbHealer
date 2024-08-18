@@ -214,16 +214,29 @@ class DumbHealerApp(QMainWindow):
         self.restore_character_data(character, mana_pixel_label, stand_key_label, enable_checkbox)
 
     def restore_character_data(self, character, pixel_label, key_label, checkbox):
-        data = character_data[character]
-        if "pixel" in pixel_label.text().lower() and data["pixel"]:
-            pixel_label.setText(f"Selected Pixel: {data['pixel']}")
-        if "heal" in key_label.text().lower() and data["heal_key"]:
-            key_label.setText(f"Assigned Heal Key: {data['heal_key']}")
-        if "sit" in key_label.text().lower() and data["sit_key"]:
-            key_label.setText(f"Assigned Sit Key: {data['sit_key']}")
-        if "stand" in key_label.text().lower() and data["stand_key"]:
-            key_label.setText(f"Assigned Stand Key: {data['stand_key']}")
-        checkbox.setChecked(data["enabled"])
+    data = character_data[character]
+    
+    # Check for health pixel
+    if "health_pixel" in pixel_label.text().lower() and data["health_pixel"]:
+        pixel_label.setText(f"Selected Health Pixel: {data['health_pixel']}")
+    
+    # Check for mana pixel
+    if "mana_pixel" in pixel_label.text().lower() and data["mana_pixel"]:
+        pixel_label.setText(f"Selected Mana Pixel: {data['mana_pixel']}")
+    
+    # Check for heal key
+    if "heal_key" in key_label.text().lower() and data["heal_key"]:
+        key_label.setText(f"Assigned Heal Key: {data['heal_key']}")
+    
+    # Check for sit key
+    if "sit_key" in key_label.text().lower() and data["sit_key"]:
+        key_label.setText(f"Assigned Sit Key: {data['sit_key']}")
+    
+    # Check for stand key
+    if "stand_key" in key_label.text().lower() and data["stand_key"]:
+        key_label.setText(f"Assigned Stand Key: {data['stand_key']}")
+    
+    checkbox.setChecked(data["enabled"])
 
     def build_profile_buttons(self, layout):
         button_layout = QHBoxLayout()
